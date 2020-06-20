@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -216,11 +217,13 @@ import static com.vanniktech.emoji.Utils.checkNotNull;
   }
 
   @SuppressWarnings("PMD.CyclomaticComplexity") void updateKeyboardStateOpened(final int keyboardHeight) {
-    if (popupWindowHeight > 0 && popupWindow.getHeight() != popupWindowHeight) {
+    /*if (popupWindowHeight > 0 && popupWindow.getHeight() != popupWindowHeight) {
       popupWindow.setHeight(popupWindowHeight);
     } else if (popupWindowHeight == 0 && popupWindow.getHeight() != keyboardHeight) {
       popupWindow.setHeight(keyboardHeight);
-    }
+    }*/
+
+    popupWindow.setHeight(keyboardHeight);
 
     if (globalKeyboardHeight != keyboardHeight) {
       globalKeyboardHeight = keyboardHeight;
@@ -230,6 +233,8 @@ import static com.vanniktech.emoji.Utils.checkNotNull;
     }
 
     final int properWidth = Utils.getProperWidth(context);
+
+    Log.d("Sameh",  "height : " + keyboardHeight + ", width : " + properWidth);
 
     if (popupWindow.getWidth() != properWidth) {
       popupWindow.setWidth(properWidth);
